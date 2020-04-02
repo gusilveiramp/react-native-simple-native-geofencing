@@ -18,19 +18,19 @@ Needs a `minSdkVersion` of 19.
 
 ## Getting started
 
-`$ npm install react-native-simple-native-geofencing --save`
+`$ yarn add https://github.com/gusilveiramp/react-native-simple-native-geofencing.git`
 
 ### Mostly automatic installation
 
+#### react-native >= 0.60
+If you're using RN 0.60 or higher, linking is automatic. So you don't need to run react-native link.
+If you're on a Mac and developing for iOS, you need to install pods to complete the linking. Make sure you have Cocoapods installed. Then run:
+
+`cd ios && pod install && cd ..`
+
+#### react-native < 0.60
 `$ react-native link react-native-simple-native-geofencing`
 
-#### iOS only:
-
-**Attention**
-
-For the module to work at least one `.Swift` file and a `Bridging-Header.h` must be added in the xcode project. Simply create an empty Swift File and Xcode will ask you if you wish to add a `Bridging-Header.h` to your project. Both Files can be empty.
-
-For background updates you have to activate this in your Xcode Project under: `Project ` ➜ `Capabilities` ➜ `Background Modes` with at least `Location updates` !
 
 ### Manual installation
 
@@ -56,26 +56,38 @@ For background updates you have to activate this in your Xcode Project under: `P
   	```
       compile project(':react-native-simple-native-geofencing')
   	```
-### Permissions
 
-### iOS
+### Post install
+#### iOS only:
+
+**Attention**
+
+For the module to work at least one `.Swift` file and a `Bridging-Header.h` must be added in the xcode project. Simply create an empty Swift File and Xcode will ask you if you wish to add a `Bridging-Header.h` to your project. Both Files can be empty.
+
+For background updates you have to activate this in your Xcode Project under: `Project ` ➜ `Capabilities` ➜ `Background Modes` with at least `Location updates` !
+
+#### Configure Background Capabilities
+
+Open your App in **XCode** and select the root of your project.  Select **Capabilities** tab.  Enable **Background Modes** and enable the following modes:
+
+- [x] Location updates
+
+![](https://i.ibb.co/2vK4x5W/Captura-de-Tela-2020-04-02-a-s-19-58-20.png)
+
+#### Configure Usage Strings in `Info.plist`
+
+Edit **`Info.plist`**.  Add the following items (Set **Value** as desired):
+
+| Key | Type | Value |
+|-----|-------|-------------|
+| *Privacy - Location Always and When in Use Usage Description* | `String` | *CHANGEME: Location required in background* |
+| *Privacy - Location When in Use Usage Description* | `String` | *CHANGEME: Location required when app is in use* |
+
+![](https://dl.dropboxusercontent.com/s/j7udsab7brlj4yk/Screenshot%202016-09-22%2008.33.53.png?dl=1)
 
 The framework itself asks for permissions for the notifications and the location. However, best practice would be to ask for permission from the user in React Native part. 
 
-The following changes must be in the `Info.plist` :
-
-```...
-<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-<string>bla bla</string>
-<key>NSLocationWhenInUseUsageDescription</key>
-<string>bla bla 2</string>
-<key>UIBackgroundModes</key>
-<array>
-<string>location</string>
-</array>
-...
-```
-#### Android
+#### Android only
 Edit AndroidManifest.xml and add the following permission and ServiceIntent:
 ```xml
 <manifest ...>
