@@ -83,9 +83,7 @@ Edit **`Info.plist`**.  Add the following items (Set **Value** as desired):
 | *Privacy - Location Always and When in Use Usage Description* | `String` | *CHANGEME: Location required in background* |
 | *Privacy - Location When in Use Usage Description* | `String` | *CHANGEME: Location required when app is in use* |
 
-![](https://dl.dropboxusercontent.com/s/j7udsab7brlj4yk/Screenshot%202016-09-22%2008.33.53.png?dl=1)
-
-The framework itself asks for permissions for the notifications and the location. However, best practice would be to ask for permission from the user in React Native part. 
+![](https://i.ibb.co/gm2D11z/Captura-de-Tela-2020-04-02-a-s-20-34-34.png)
 
 #### Android only
 Edit AndroidManifest.xml and add the following permission and ServiceIntent:
