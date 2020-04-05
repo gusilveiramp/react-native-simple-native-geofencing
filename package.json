@@ -18,8 +18,11 @@
     "cru3lgenius"
   ],
   "license": "MIT",
+  "devDependencies": {
+    "react-native": ">0.48.0"
+  },
   "peerDependencies": {
-    "react-native": ">0.47.0"
+    "react-native": ">0.48.0"
   },
   "repository": {
     "type": "git",
